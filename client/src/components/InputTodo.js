@@ -1,7 +1,8 @@
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 
 export default function InputTodo() {
   const [description, setDescription] = useState("");
+  const formRef = useRef(null);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -13,7 +14,12 @@ export default function InputTodo() {
         body: JSON.stringify(body),
       });
 
-      window.location = "/";
+      // Check if the response indicates a successful submission
+      if (response.ok) {
+        // Clear the form fields
+        formRef.current.reset();
+        console.log("Posted");
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -28,7 +34,12 @@ export default function InputTodo() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button>add</button>
+        <button
+          className="bg-black px-[10px] py-[7px] text-[#fff]"
+          type="submit"
+        >
+          add
+        </button>
       </form>
     </div>
   );
