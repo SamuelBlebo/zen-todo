@@ -1,8 +1,7 @@
-import { React, useState, useRef } from "react";
+import { React, useState } from "react";
 
 export default function InputTodo() {
   const [description, setDescription] = useState("");
-  const formRef = useRef(null);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -17,9 +16,10 @@ export default function InputTodo() {
       // Check if the response indicates a successful submission
       if (response.ok) {
         // Clear the form fields
-        formRef.current.reset();
+        setDescription("");
         console.log("Posted");
       }
+      window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
