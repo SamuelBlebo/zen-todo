@@ -1,6 +1,10 @@
 import { React, useState, useEffect } from "react";
 import EditTodo from "./EditTodo"; // Import the EditTodo component
 
+// icons import
+import { BiSolidEditAlt } from "react-icons/bi";
+import { BsCheckCircleFill } from "react-icons/bs";
+
 export default function ListTodo() {
   const [todos, setTodos] = useState([]);
 
@@ -46,43 +50,29 @@ export default function ListTodo() {
 
   return (
     <div>
-      <table class="table mt-5 text-center">
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
+      <table class="table mt-5 w-[460px] ">
         <tbody>
-          {/*<tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-          </tr> */}
           {todos.map((todo) => (
-            <tr key={todo.todo_id}>
-              <td>
+            <tr
+              key={todo.todo_id}
+              className=" flex items-center justify-center mb-4 w-[460px]"
+            >
+              <td className="w-[460px] bg-green-300 h-[50px] flex items-center rounded-l-lg px-[25px]">
                 {editingTodo === todo.todo_id ? (
                   <EditTodo todo={todo} onUpdate={updateTodo} />
                 ) : (
                   todo.description
                 )}
               </td>
-              <td>
+              <td className="bg-[#000] text-[#fff] h-[50px] w-[40px] flex items-center justify-center">
                 {editingTodo === todo.todo_id ? null : ( // No "Edit" button while editing
-                  <button onClick={() => setEditingTodo(todo.todo_id)}>
-                    Edit
-                  </button>
+                  <BiSolidEditAlt
+                    onClick={() => setEditingTodo(todo.todo_id)}
+                  />
                 )}
               </td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => deleteTodo(todo.todo_id)}
-                >
-                  Delete
-                </button>
+              <td className="bg-[#000] text-green-300 h-[50px] w-[40px] flex items-center justify-center rounded-r-lg">
+                <BsCheckCircleFill onClick={() => deleteTodo(todo.todo_id)} />
               </td>
             </tr>
           ))}
