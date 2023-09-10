@@ -49,29 +49,29 @@ export default function ListTodo() {
   }, []);
 
   return (
-    <div>
-      <table class="table mt-5 w-[460px] ">
+    <div className="overflow-x-auto no-scrollbar h-[450px]">
+      <table class="table mt-5  ">
         <tbody>
           {todos.map((todo) => (
             <tr
               key={todo.todo_id}
-              className=" flex items-center justify-center mb-4 w-[460px]"
+              className=" flex items-center justify-center mb-2 lg:mb-4 "
             >
-              <td className="w-[460px] bg-green-300 h-[50px] flex items-center rounded-l-lg px-[25px]">
+              <td className=" w-[180px] lg:w-[260px] xl:w-[380px] bg-green-300  h-[40px]  lg:h-[50px] flex items-center rounded-l-lg px-[25px]">
                 {editingTodo === todo.todo_id ? (
                   <EditTodo todo={todo} onUpdate={updateTodo} />
                 ) : (
                   todo.description
                 )}
               </td>
-              <td className="bg-[#000] text-[#fff] h-[50px] w-[40px] flex items-center justify-center">
+              <td className="bg-[#000] text-[#fff] h-[40px]  lg:h-[50px] w-[30px] flex items-center justify-center">
                 {editingTodo === todo.todo_id ? null : ( // No "Edit" button while editing
                   <BiSolidEditAlt
                     onClick={() => setEditingTodo(todo.todo_id)}
                   />
                 )}
               </td>
-              <td className="bg-[#000] text-green-300 h-[50px] w-[40px] flex items-center justify-center rounded-r-lg">
+              <td className="bg-[#000] text-green-300 w-[35px] h-[40px]  lg:h-[50px] flex items-center justify-center rounded-r-lg">
                 <BsCheckCircleFill onClick={() => deleteTodo(todo.todo_id)} />
               </td>
             </tr>
