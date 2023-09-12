@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "framework": {
+    "name": "none",
+    "build": {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "client/build" }
+    }
+  },
+  "builds": [
+    {
+      "src": "server/**/*.js",
+      "use": "@vercel/node"
+    }
+  ]
+}
