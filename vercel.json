@@ -1,9 +1,4 @@
 {
-    "functions": {
-      "api": {
-        "handler": "server/index.js"
-      }
-    },
     "rewrites": [
       {
         "source": "/api/(.*)",
