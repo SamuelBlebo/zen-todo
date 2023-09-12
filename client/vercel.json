@@ -4,29 +4,9 @@
     {
       "src": "client/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "client/build" }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*).js",
-      "dest": "/client/build/$1.js"
-    },
-    {
-      "src": "/(.*).css",
-      "dest": "/client/build/$1.css"
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/client/build/favicon.ico"
-    },
-    {
-      "src": "/manifest.json",
-      "dest": "/client/build/manifest.json"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/build/index.html"
+      "config": {
+        "distDir": "client/build"
+      }
     }
   ]
 }
