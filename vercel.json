@@ -1,0 +1,18 @@
+{
+    "functions": {
+      "api": {
+        "handler": "server/index.js"
+      }
+    },
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "/.netlify/functions/api"
+      },
+      {
+        "source": "/(.*)",
+        "destination": "/client/$1"
+      }
+    ]
+  }
+  
